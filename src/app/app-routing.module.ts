@@ -14,6 +14,13 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
+  },
+  { path: 'vendedores', 
+    loadChildren: './vendedores/vendedores.module#VendedoresPageModule' 
+  },
+  { 
+    path: 'vendedores', 
+    loadChildren: './vendedores/vendedores.module#VendedoresPageModule' 
   }
 ];
 
