@@ -8,5 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-row><b>id: </b>{{ item.id }}</ion-row>
+      <ion-row><b>Nome: </b>{{ item.nome }}</ion-row>
+      <ion-row><b>CPF: </b>{{ item.cpf }}</ion-row>
+      <div class="buttons">
+        <ion-button fill="clear" slot="end" size="default">
+          <ion-icon name="refresh"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" slot="end" size="default">
+            <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
