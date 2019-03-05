@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VendedorService } from 'src/services/domain/vendedor.service';
 
 @Component({
   selector: 'app-vendedores',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendedoresPage implements OnInit {
 
-  constructor() { }
+  constructor(public vendedorService: VendedorService) { }
 
   ngOnInit() {
+    this.vendedorService.findAll()
+      .subscribe(response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      })
   }
-
 }
