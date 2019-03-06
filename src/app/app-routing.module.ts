@@ -19,8 +19,8 @@ const routes: Routes = [
     loadChildren: './vendedores/vendedores.module#VendedoresPageModule' 
   },
   { 
-    path: 'vendedores', 
-    loadChildren: './vendedores/vendedores.module#VendedoresPageModule' 
+    path: 'cadastro-vendedor', 
+    loadChildren: './cadastro-vendedor/cadastro-vendedor.module#CadastroVendedorPageModule' 
   }
 ];
 

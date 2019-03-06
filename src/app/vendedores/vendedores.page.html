@@ -7,20 +7,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-row><b>id: </b>{{ item.id }}</ion-row>
-      <ion-row><b>Nome: </b>{{ item.nome }}</ion-row>
-      <ion-row><b>CPF: </b>{{ item.cpf }}</ion-row>
-      <div class="buttons">
-        <ion-button fill="clear" slot="end" size="default">
-          <ion-icon name="refresh"></ion-icon>
-        </ion-button>
-        <ion-button fill="clear" slot="end" size="default">
-            <ion-icon name="trash"></ion-icon>
-        </ion-button>
-      </div>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <ion-item *ngFor="let item of items">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <div>
+              {{ item.id }}
+            </div>
+          </ion-col>
+          <ion-col size="8">
+            <div>
+              {{ item.cpf }}
+            </div>
+          </ion-col>
+          <ion-col size="2">
+            <div>
+              <ion-button fill="clear" size="default">
+                <ion-icon name="refresh"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="10">
+            <div>
+              {{ item.nome }}
+            </div>
+          </ion-col>
+          <ion-col size="2">
+            <div>
+              <ion-button fill="clear" size="default">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-item>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/cadastro-vendedor" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

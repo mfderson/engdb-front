@@ -14,18 +14,6 @@ export class VendedoresPage implements OnInit {
   constructor(public vendedorService: VendedorService) { }
 
   ngOnInit() {
-    // this.items = [
-    //   {
-    //     id: "1",
-    //     nome: "Bosta do Peruca",
-    //     cpf: "12345678912"
-    //   },
-    //   {
-    //     id: "2",
-    //     nome: "Bosta do Nandim",
-    //     cpf: "12345678913"
-    //   }
-    // ]
     this.vendedorService.findAll()
       .subscribe(response => {
         this.items = response['content'];

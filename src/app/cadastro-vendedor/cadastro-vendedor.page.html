@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/vendedores"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de Vendedor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label stacked position="floating">Nome*</ion-label>
+      <ion-input name="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked position="floating">CPF*</ion-label>
+      <ion-input name="cpf" type="text"></ion-input>
+    </ion-item>
+    <button type="submit" block>Submit</button>
+  </form>
+</ion-content>
