@@ -38,8 +38,8 @@ export class CadastroVendedorPage implements OnInit {
       error => {});
   }
 
-  showInsertOk() {
-    let alert = this.alertCtrl.create({
+  async showInsertOk() {
+    const alert = await this.alertCtrl.create({
       header: "Sucesso!",
       message: "Cadastro efetuado com sucesso",
       backdropDismiss: false,
@@ -52,6 +52,7 @@ export class CadastroVendedorPage implements OnInit {
         }
       ]
     });
+    await alert.present();
   }
 
 }
