@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { VendedorService } from 'src/services/domain/vendedor.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-vendedor',
@@ -12,7 +15,11 @@ export class CadastroVendedorPage implements OnInit {
   // nome: AbstractControl;
   // cpf: AbstractControl;
   
-  constructor(public formBuilder: FormBuilder) { 
+  constructor(
+    public formBuilder: FormBuilder, 
+    public vendedorService: VendedorService,
+    public alertCtrl: AlertController,
+    private router: Router) { 
 
     this.formGroup = this.formBuilder.group({
       nome: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(50)])],
@@ -24,11 +31,27 @@ export class CadastroVendedorPage implements OnInit {
   }
 
   onSubmit() {
-    if (this.formGroup.invalid) {
-      console.log("falha na validação");
-      console.log(this.formGroup.controls['nome'].value);
-    }
-    console.log("enviou o form");
+    this.vendedorService.insert(this.formGroup.value)
+      .subscribe(response => {
+        this.showInsertOk();
+      },
+      error => {});
+  }
+
+  showInsertOk() {
+    let alert = this.alertCtrl.create({
+      header: "Sucesso!",
+      message: "Cadastro efetuado com sucesso",
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: "Ok",
+          handler: () => {
+            this.router.navigate(['/vendedores'])
+          }
+        }
+      ]
+    });
   }
 
 }

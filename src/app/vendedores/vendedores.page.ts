@@ -18,8 +18,6 @@ export class VendedoresPage implements OnInit {
       .subscribe(response => {
         this.items = response['content'];
       },
-      error => {
-        console.log(error);
-      })
+      error => { })
   }
 }
