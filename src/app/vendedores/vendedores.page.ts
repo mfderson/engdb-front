@@ -14,6 +14,14 @@ export class VendedoresPage implements OnInit {
   constructor(public vendedorService: VendedorService) { }
 
   ngOnInit() {
+    // this.vendedorService.findAll()
+    //   .subscribe(response => {
+    //     this.items = response['content'];
+    //   },
+    //   error => { })
+  }
+
+  ionViewWillEnter() {
     this.vendedorService.findAll()
       .subscribe(response => {
         this.items = response['content'];
