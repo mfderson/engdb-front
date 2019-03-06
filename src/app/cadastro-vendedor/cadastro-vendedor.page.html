@@ -8,15 +8,15 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="onSubmit()">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label stacked position="floating">Nome*</ion-label>
-      <ion-input name="nome" type="text"></ion-input>
+      <ion-input FormControlName="nome" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked position="floating">CPF*</ion-label>
-      <ion-input name="cpf" type="text"></ion-input>
+      <ion-input FormControlName="cpf" type="text"></ion-input>
     </ion-item>
-    <button type="submit" block>Submit</button>
+    <ion-button type="submit" block>Submit</ion-button>
   </form>
 </ion-content>

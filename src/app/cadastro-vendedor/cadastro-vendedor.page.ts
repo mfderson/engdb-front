@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-vendedor',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroVendedorPage implements OnInit {
 
-  constructor() { }
+  formGroup: FormGroup;
+  
+  constructor(public formBuilder: FormBuilder) { 
+
+    this.formGroup = this.formBuilder.group({
+      nome: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(13)]]
+    });
+  }
 
   ngOnInit() {
   }
