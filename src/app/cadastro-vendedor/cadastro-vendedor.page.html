@@ -8,15 +8,17 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(); $event.preventDefault()">
     <ion-item>
       <ion-label stacked position="floating">Nome*</ion-label>
-      <ion-input FormControlName="nome" type="text"></ion-input>
+      <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor inválido!</p>
     <ion-item>
       <ion-label stacked position="floating">CPF*</ion-label>
-      <ion-input FormControlName="cpf" type="text"></ion-input>
+      <ion-input formControlName="cpf" type="text"></ion-input>
     </ion-item>
-    <ion-button type="submit" block>Submit</ion-button>
+    <p class="danger" *ngIf="formGroup.controls.cpf.dirty && formGroup.controls.cpf.errors" margin-left>Valor inválido!</p>
+    <ion-button expand="full" shape="round" color="primary" type="submit" [disabled]="formGroup.invalid">Cadastrar</ion-button>
   </form>
 </ion-content>
