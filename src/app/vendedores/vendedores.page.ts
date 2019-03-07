@@ -12,7 +12,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class VendedoresPage implements OnInit {
 
-  items: VendedorViewDTO[];
+  items: VendedorViewDTO[] = [];
+  page: number = 0;
 
   constructor(
     public vendedorService: VendedorService,
@@ -28,9 +29,17 @@ export class VendedoresPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.vendedorService.findAll()
+    this.page = 0;
+    this.items = [];
+    this.loadData();
+  }
+
+  loadData() {
+    this.vendedorService.findAll(10, this.page)
       .subscribe(response => {
-        this.items = response['content'];
+        this.items = this.items.concat(response['content']);
+        console.log(this.page);
+        console.log(this.items);
       },
       error => { })
   }
@@ -62,6 +71,8 @@ export class VendedoresPage implements OnInit {
             this.vendedorService.delete(id)
               .subscribe(
                 response => {
+                  this.page = 0;
+                  this.items = [];
                   this.ionViewWillEnter();
                 },
                 error => {});
@@ -75,4 +86,16 @@ export class VendedoresPage implements OnInit {
     });
     await alert.present();
   }
+
+  doInfinity(event) {
+    this.page++;
+    this.loadData();
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
+
+  // toggleInfiniteScroll() {
+  //   this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+  // }
 }

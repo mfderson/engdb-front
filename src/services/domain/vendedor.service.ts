@@ -13,8 +13,8 @@ export class VendedorService {
 
     }
 
-    findAll() : Observable<VendedorViewDTO[]> {
-        return this.http.get<VendedorViewDTO[]>(`${API_CONFIG.baseUrl}/vendedores/page`);
+    findAll(size: number = 24, page: number = 0) : Observable<VendedorViewDTO[]> {
+        return this.http.get<VendedorViewDTO[]>(`${API_CONFIG.baseUrl}/vendedores/page/?size=${size}&page=${page}`);
     }
 
     insert(obj: VendedorNewDTO) {
