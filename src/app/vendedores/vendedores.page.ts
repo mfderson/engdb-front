@@ -3,6 +3,7 @@ import { VendedorService } from 'src/services/domain/vendedor.service';
 import { VendedorViewDTO } from 'src/models/vendedor.view.dto';
 import { Router, NavigationExtras } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-vendedores',
@@ -15,6 +16,7 @@ export class VendedoresPage implements OnInit {
 
   constructor(
     public vendedorService: VendedorService,
+    public alertCtrl: AlertController,
     private router: Router) { }
 
   ngOnInit() {
@@ -33,8 +35,7 @@ export class VendedoresPage implements OnInit {
       error => { })
   }
 
-  showData(item: VendedorViewDTO) {
-    console.log("Passou no openDetails: id = " + item.id + " nome = " + item.nome);
+  onCickEdit(item: VendedorViewDTO) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
           "id": item.id,
@@ -44,13 +45,34 @@ export class VendedoresPage implements OnInit {
     this.router.navigate(["edita-vendedor"], navigationExtras);
   }
 
-  // showData(id: string, nome: string, cpf: string) {
-  //   console.log("Dados do item a ser editado: " + "id= " + id + " nome = " + nome);
-  // }
+  onCickDelete(id: string) {
 
+    this.confirmDelete(id);
+  }
 
-
-  // onClickEdit(vendedor_id: string) {
-  //   this.router.  navigate('EditaVendedorPage', {id: vendedor_id});
-  // }
+  async confirmDelete(id: string) {
+    const alert = await this.alertCtrl.create({
+      header: "Excluir vendedor",
+      message: "Você tem certeza?",
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: "Sim",
+          handler: () => {
+            this.vendedorService.delete(id)
+              .subscribe(
+                response => {
+                  this.ionViewWillEnter();
+                },
+                error => {});
+          }
+        },
+        {
+          text: "Não",
+          role: 'cancel'
+        }
+      ]
+    });
+    await alert.present();
+  }
 }
