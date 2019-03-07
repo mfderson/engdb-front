@@ -8,11 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-    <form [formGroup]="formGroup">
-      <ion-item>
-        <ion-label stacked position="floating">id</ion-label>
-        <ion-input formControlName="id" type="text" readonly></ion-input>
-      </ion-item>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(); $event.preventDefault()">
       <ion-item>
         <ion-label stacked position="floating">Nome*</ion-label>
         <ion-input formControlName="nome" type="text"></ion-input>

@@ -31,6 +31,7 @@ export class CadastroVendedorPage implements OnInit {
   }
 
   onSubmit() {
+    console.log("formGroup: " + this.formGroup.value);
     this.vendedorService.insert(this.formGroup.value)
       .subscribe(response => {
         this.showInsertOk();

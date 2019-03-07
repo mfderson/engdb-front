@@ -26,7 +26,7 @@ export class VendedorService {
     }
 
     update(id: string, obj: VendedorUpdtDTO) {
-        return this.http.put(`${API_CONFIG.baseUrl}/vendedores/`, obj, 
+        return this.http.put(`${API_CONFIG.baseUrl}/vendedores/${id}`, obj, 
         {
             observe: 'response',
             responseType: 'text'
