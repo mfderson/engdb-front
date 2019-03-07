@@ -35,5 +35,5 @@ Vá até a pasta do projeto e rode o seguinte comando:
 
 3. Para implementação do código foram diversos *links* utilizados, os principais foram:
 
-* [Professor Nelio Alves](https://www.udemy.com/spring-boot-ionic/);
-* [Documentação Ionic](https://ionicframework.com/docs/api/)
+   * [Professor Nelio Alves](https://www.udemy.com/spring-boot-ionic/);
+   * [Documentação Ionic](https://ionicframework.com/docs/api/)
