@@ -21,7 +21,12 @@ const routes: Routes = [
   { 
     path: 'cadastro-vendedor', 
     loadChildren: './cadastro-vendedor/cadastro-vendedor.module#CadastroVendedorPageModule' 
+  },
+  { 
+    path: 'edita-vendedor', 
+    loadChildren: './edita-vendedor/edita-vendedor.module#EditaVendedorPageModule' 
   }
+
 ];
 
 @NgModule({

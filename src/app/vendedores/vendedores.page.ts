@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VendedorService } from 'src/services/domain/vendedor.service';
 import { VendedorViewDTO } from 'src/models/vendedor.view.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendedores',
@@ -11,7 +12,9 @@ export class VendedoresPage implements OnInit {
 
   items: VendedorViewDTO[];
 
-  constructor(public vendedorService: VendedorService) { }
+  constructor(
+    public vendedorService: VendedorService,
+    private router: Router) { }
 
   ngOnInit() {
     // this.vendedorService.findAll()
@@ -28,4 +31,8 @@ export class VendedoresPage implements OnInit {
       },
       error => { })
   }
+
+  // onClickEdit(vendedor_id: string) {
+  //   this.router.  navigate('EditaVendedorPage', {id: vendedor_id});
+  // }
 }

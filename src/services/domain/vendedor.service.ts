@@ -4,6 +4,7 @@ import { API_CONFIG } from 'src/config/api.config';
 import { Observable } from 'rxjs';
 import { VendedorViewDTO } from 'src/models/vendedor.view.dto';
 import { VendedorNewDTO } from 'src/models/vendedor.new.dto';
+import { VendedorUpdtDTO } from 'src/models/vendedor.updt.dto';
 
 @Injectable()
 export class VendedorService {
@@ -18,6 +19,14 @@ export class VendedorService {
 
     insert(obj: VendedorNewDTO) {
         return this.http.post(`${API_CONFIG.baseUrl}/vendedores`, obj,
+        {
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
+
+    update(id: string, obj: VendedorUpdtDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/vendedores/`, obj, 
         {
             observe: 'response',
             responseType: 'text'

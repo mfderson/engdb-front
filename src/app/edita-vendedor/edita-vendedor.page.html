@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/vendedores"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Editar Vendedor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="formGroup">
+      <ion-item>
+        <ion-label stacked position="floating">id</ion-label>
+        <ion-input formControlName="id" type="text" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked position="floating">Nome*</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor inválido!</p>
+      <ion-button expand="full" shape="round" color="primary" type="submit" [disabled]="formGroup.invalid">Atualizar</ion-button>
+    </form>
+  </ion-content>
